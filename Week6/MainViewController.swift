@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
         [Int](81...90),
         [Int](91...100)
         ]
-    
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         
         bannerCollectionView.delegate = self
         bannerCollectionView.dataSource = self
-        bannerCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionViewCell" )
+        bannerCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionViewCell")
         bannerCollectionView.collectionViewLayout = collectionViewLayOut()
         bannerCollectionView.isPagingEnabled = true // 디바이스 너비만큼 움직임. 이동폭 맞추려면 이미지를 디바이스 폭이랑 맞춰야함.
     }
@@ -44,17 +44,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return numberLIst.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
         
-        cell.backgroundColor = .yellow
+        cell.backgroundColor = .orange
         cell.contentCollectionView.backgroundColor = .lightGray
         cell.contentCollectionView.delegate = self
         cell.contentCollectionView.dataSource = self
-        cell.contentCollectionView.tag = indexPath.section // 셀 구분 짓기
+        cell.contentCollectionView.tag = indexPath.section // 태그 통해 각 셀 구분  짓기
         cell.contentCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionViewCell")
         return cell
     }
@@ -66,11 +66,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
-//하나의 프로토콜에서 여러 컬렉션 뷰의 delegate, datasource 구현해야함.
+//하나의 프로토콜에서 여러 컬렉션 뷰의 delegate, datasource 구현해야함.(bannerCollectionView, UICollectionView 둘 다에서 위임해야됨)
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return collectionView == bannerCollectionView ? color.count : 10
-        return collectionView == bannerCollectionView ? color.count : numberLIst[collectionView.tag].count
+        return collectionView == bannerCollectionView ? color.count : 10
+//        return collectionView == bannerCollectionView ? color.count : numberLIst[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -9,16 +9,16 @@ import UIKit
 
 class ClosureViewController: UIViewController {
 
-    @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var cardView: CardView! //UIView상속받은 CardView 커스텀클래스를 바꿔줬기 때문에 속성이 CardView이다. 그러면 CardView에 선언했던 하트, 이미지뷰 네임을 가져올수있음.
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        cardView.posterImageView.background = .red
-//        cardView.likeButton.background = .yellow
-//        cardView.likeButton.addtarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
-//        
+        cardView.posterImageView.backgroundColor = .red
+        cardView.likeButton.backgroundColor = .yellow
+        //cardView.likeButton.addtarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
     }
 
     @IBAction func colorPickerButtonClicked(_ sender: UIButton) {
@@ -56,3 +56,4 @@ extension UIViewController {
         present(alert, animated: true)
     }
 }
+

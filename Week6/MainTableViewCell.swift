@@ -8,7 +8,7 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -16,7 +16,7 @@ class MainTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         setupUI()
-        contentCollectionView.collectionViewLayout = collectionViewLayOut()
+        
         //collectionViewLayOut()가 아니라 왜 contentCollectionView.collectionViewLayout = collectionViewLayOut()인지?
         
     }
@@ -26,7 +26,8 @@ class MainTableViewCell: UITableViewCell {
         titleLabel.text = "넷플릭스 인기콘텐츠"
         titleLabel.backgroundColor = .clear
         
-        contentCollectionView.backgroundColor = .blue
+        contentCollectionView.backgroundColor = .clear
+        contentCollectionView.collectionViewLayout = collectionViewLayOut()
     }
     
     func collectionViewLayOut() -> UICollectionViewFlowLayout {

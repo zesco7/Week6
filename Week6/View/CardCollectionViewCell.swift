@@ -28,3 +28,4 @@ class CardCollectionViewCell: UICollectionViewCell {
  변경되지 않는 UI: awakeFromNib
  awakeFromNib()에 setupUI()호출하면 코드 재사용하는동안에 변경되지 않는 ui 적용
  */
+
