@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9813C46928A1E03800C3487B /* SeSACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813C46828A1E03800C3487B /* SeSACButton.swift */; };
+		9813C46B28A1E61400C3487B /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9813C46A28A1E61400C3487B /* CardView.xib */; };
+		9813C46D28A1E64600C3487B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813C46C28A1E64600C3487B /* CardView.swift */; };
+		9813C47028A1F38600C3487B /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813C46E28A1F38600C3487B /* CardCollectionViewCell.swift */; };
+		9813C47128A1F38600C3487B /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9813C46F28A1F38600C3487B /* CardCollectionViewCell.xib */; };
+		9813C47328A1F64A00C3487B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813C47228A1F64A00C3487B /* MainViewController.swift */; };
+		9813C47528A1FC2D00C3487B /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813C47428A1FC2D00C3487B /* MainTableViewCell.swift */; };
 		981FDFF228A1B5DA00F99E73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FDFF128A1B5DA00F99E73 /* AppDelegate.swift */; };
 		981FDFF428A1B5DA00F99E73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FDFF328A1B5DA00F99E73 /* SceneDelegate.swift */; };
 		981FDFF628A1B5DA00F99E73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FDFF528A1B5DA00F99E73 /* ViewController.swift */; };
@@ -25,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9813C46828A1E03800C3487B /* SeSACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACButton.swift; sourceTree = "<group>"; };
+		9813C46A28A1E61400C3487B /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		9813C46C28A1E64600C3487B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		9813C46E28A1F38600C3487B /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		9813C46F28A1F38600C3487B /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		9813C47228A1F64A00C3487B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9813C47428A1FC2D00C3487B /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		981FDFEE28A1B5DA00F99E73 /* Week6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981FDFF128A1B5DA00F99E73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		981FDFF328A1B5DA00F99E73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9813C46728A1DFE600C3487B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9813C46828A1E03800C3487B /* SeSACButton.swift */,
+				9813C46C28A1E64600C3487B /* CardView.swift */,
+				9813C46A28A1E61400C3487B /* CardView.xib */,
+				9813C46E28A1F38600C3487B /* CardCollectionViewCell.swift */,
+				9813C46F28A1F38600C3487B /* CardCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		981FDFE528A1B5DA00F99E73 = {
 			isa = PBXGroup;
 			children = (
@@ -75,11 +101,14 @@
 		981FDFF028A1B5DA00F99E73 /* Week6 */ = {
 			isa = PBXGroup;
 			children = (
+				9813C46728A1DFE600C3487B /* View */,
 				981FE00728A1B5FE00F99E73 /* Kakao */,
 				981FDFF128A1B5DA00F99E73 /* AppDelegate.swift */,
 				981FDFF328A1B5DA00F99E73 /* SceneDelegate.swift */,
 				981FDFF528A1B5DA00F99E73 /* ViewController.swift */,
 				981FDFF728A1B5DA00F99E73 /* Main.storyboard */,
+				9813C47428A1FC2D00C3487B /* MainTableViewCell.swift */,
+				9813C47228A1F64A00C3487B /* MainViewController.swift */,
 				981FDFFA28A1B5DB00F99E73 /* Assets.xcassets */,
 				981FDFFC28A1B5DB00F99E73 /* LaunchScreen.storyboard */,
 				981FDFFF28A1B5DB00F99E73 /* Info.plist */,
@@ -169,7 +198,9 @@
 			files = (
 				981FE00628A1B5EC00F99E73 /* .gitignore in Resources */,
 				981FDFFE28A1B5DB00F99E73 /* LaunchScreen.storyboard in Resources */,
+				9813C46B28A1E61400C3487B /* CardView.xib in Resources */,
 				981FDFFB28A1B5DB00F99E73 /* Assets.xcassets in Resources */,
+				9813C47128A1F38600C3487B /* CardCollectionViewCell.xib in Resources */,
 				981FDFF928A1B5DA00F99E73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,11 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9813C47528A1FC2D00C3487B /* MainTableViewCell.swift in Sources */,
 				981FDFF628A1B5DA00F99E73 /* ViewController.swift in Sources */,
 				981FDFF228A1B5DA00F99E73 /* AppDelegate.swift in Sources */,
 				981FE01A28A1C70700F99E73 /* ClosureViewController.swift in Sources */,
+				9813C47328A1F64A00C3487B /* MainViewController.swift in Sources */,
+				9813C47028A1F38600C3487B /* CardCollectionViewCell.swift in Sources */,
 				981FE00928A1B61F00F99E73 /* APIKey.swift in Sources */,
+				9813C46D28A1E64600C3487B /* CardView.swift in Sources */,
 				981FDFF428A1B5DA00F99E73 /* SceneDelegate.swift in Sources */,
+				9813C46928A1E03800C3487B /* SeSACButton.swift in Sources */,
 				981FE01828A1C23A00F99E73 /* KakaoAPIManager.swift in Sources */,
 				981FE00B28A1B66600F99E73 /* Endpoint.swift in Sources */,
 				981FE00D28A1B6A300F99E73 /* URL+Extension.swift in Sources */,

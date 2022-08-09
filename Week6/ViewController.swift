@@ -89,6 +89,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return section == 0 ? "블로그 검색결과" : "카페 검색결과"
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     
 }
 
