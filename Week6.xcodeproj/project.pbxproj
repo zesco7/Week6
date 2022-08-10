@@ -109,6 +109,7 @@
 				9813C46728A1DFE600C3487B /* View */,
 				981FE00728A1B5FE00F99E73 /* Kakao */,
 				981FDFF128A1B5DA00F99E73 /* AppDelegate.swift */,
+				9889247528A343FA00EE934C /* TMDBAPIManager.swift */,
 				981FDFF328A1B5DA00F99E73 /* SceneDelegate.swift */,
 				981FDFF528A1B5DA00F99E73 /* ViewController.swift */,
 				981FDFF728A1B5DA00F99E73 /* Main.storyboard */,
@@ -129,7 +130,6 @@
 				981FE00C28A1B6A300F99E73 /* URL+Extension.swift */,
 				981FE01728A1C23A00F99E73 /* KakaoAPIManager.swift */,
 				981FE01928A1C70700F99E73 /* ClosureViewController.swift */,
-				9889247528A343FA00EE934C /* TMDBAPIManager.swift */,
 			);
 			path = Kakao;
 			sourceTree = "<group>";

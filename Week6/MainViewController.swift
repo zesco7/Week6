@@ -7,6 +7,10 @@
 
 import UIKit
 
+import Alamofire
+import Kingfisher
+import SwiftyJSON
+
 
 /*
  awakeFromNib: 셀UI초기화
@@ -20,6 +24,14 @@ import UIKit
  -. 복합적인 구조라면 테이블셀, 컬렉션셀도 재사용 되어야함.
  
  */
+
+/*code flow
+ 1. 네트워크 통신으로 데이터 받기
+ 2. 배열을 통한 데이터 인덱싱 후 배열에 담기
+ 3. 뷰에 표현
+ **화면이랑 데이터는 따로 놀기 때문에 reloadData해줘야함.
+ */
+ 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var bannerCollectionView: UICollectionView!
@@ -27,13 +39,14 @@ class MainViewController: UIViewController {
     
     let color: [UIColor] = [.red, .systemPink, .blue, .yellow, .orange]
     
-    let numberLIst: [[Int]] = [
+    let numberList: [[Int]] = [
         [Int](100...130),
         [Int](55...75),
         [Int](81...90),
         [Int](91...100)
         ]
      
+    var episodeList: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,16 +60,21 @@ class MainViewController: UIViewController {
         bannerCollectionView.collectionViewLayout = collectionViewLayOut()
         bannerCollectionView.isPagingEnabled = true // 디바이스 너비만큼 움직임. 이동폭 맞추려면 이미지를 디바이스 폭이랑 맞춰야함.
         
-        TMDBAPIManager.shared.requestEpisodeImage()
+        //TMDBAPIManager.shared.requestImage에 담긴 데이터를 받아서 episodeList배열에 넣기
+        TMDBAPIManager.shared.requestImage { value in
+            dump(value)
+            self.episodeList = value
+            self.mainTableView.reloadData()
+        }
     }
-    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //return 10
-        return numberLIst.count
+        //return numberList.count
+        return episodeList.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -70,6 +88,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         print("MainViewController", #function, indexPath)
         
         cell.backgroundColor = .orange
+        cell.titleLabel.text = "\(TMDBAPIManager.shared.tvList[indexPath.section].0)  다시보기"
         cell.contentCollectionView.backgroundColor = .lightGray
         cell.contentCollectionView.delegate = self
         cell.contentCollectionView.dataSource = self
@@ -81,7 +100,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return 190
-        return indexPath.section == 3 ? 350 : 190
+        //return indexPath.section == 3 ? 350 : 190
+        return 240
     }
     
     
@@ -89,8 +109,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 //하나의 프로토콜에서 여러 컬렉션 뷰의 delegate, datasource 구현해야함.(bannerCollectionView, UICollectionView 둘 다에서 위임해야됨)
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == bannerCollectionView ? color.count : 10
-//        return collectionView == bannerCollectionView ? color.count : numberLIst[collectionView.tag].count
+        //return collectionView == bannerCollectionView ? color.count : 10
+        //return collectionView == bannerCollectionView ? color.count : numberList[collectionView.tag].count
+        return collectionView == bannerCollectionView ? color.count : episodeList[collectionView.tag].count
     }
     
     //bannerCollectionview 또는 테이블뷰 안에 들어 있는 컬렉션뷰 둘 다 사용 가능하다.(어떤걸 재활용할지 정하는 것이기 때문)
@@ -105,18 +126,20 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.cardView.posterImageView.backgroundColor = color[indexPath.item]
         } else {
             //cell.cardView.backgroundColor = collectionView.tag.isMultiple(of: 2) ? .brown : .black
-            cell.cardView.posterImageView.backgroundColor = .black
+            cell.cardView.posterImageView.backgroundColor = .blue
             cell.cardView.contentLabel.textColor = .white
             
+            let url = URL(string: "\(TMDBAPIManager.shared.imageURL)\(episodeList[collectionView.tag][indexPath.item])")
+            cell.cardView.posterImageView.kf.setImage(with: url)
+            cell.cardView.contentLabel.text = ""
             
             //컬렉션뷰 레이블표시에 조건문 적용해보기
             
-            
-            cell.cardView.contentLabel.text = "\(numberLIst[collectionView.tag][indexPath.item])"
-//            if indexPath.item < 2 {
-//            cell.cardView.contentLabel.text = "\(numberLIst[collectionView.tag][indexPath.item])"
-//
-//            }
+            //cell.cardView.contentLabel.text = "\(numberList[collectionView.tag][indexPath.item])"
+            //            if indexPath.item < 2 {
+            //            cell.cardView.contentLabel.text = "\(numberList[collectionView.tag][indexPath.item])"
+            //
+            //            }
         }
         //cell.cardView.posterImageView.backgroundColor = color[indexPath.item]
         

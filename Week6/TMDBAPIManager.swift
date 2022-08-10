@@ -6,11 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 import Alamofire
 import Kingfisher
 import SwiftyJSON
-import UIKit
 
 class TMDBAPIManager {
     static let shared = TMDBAPIManager()
@@ -39,57 +39,65 @@ class TMDBAPIManager {
             case .success(let value):
                 
                 let json = JSON(value)
+                print(json)
                 
+                //let still = json["episodes"][1]["still_path"].stringValue
+                //print(still)
+               
                 var stillArray : [String] = []
 
                 for list in json["episodes"].arrayValue {
                     let value = list["still_path"].stringValue
                     stillArray.append(value)
                 }
-                print(stillArray)
-                //dump(stillArray)//print vs dump : dump는 계층구조를 보여줌
-                //let still = json["episodes"][0]["still_path"].stringValue
-                //print(still)
                 
                 //고차함수 사용
                 let value = json["episodes"].arrayValue.map { $0["still_path"].stringValue }
                 completionHandler(value)
-
+                
+                /*print vs dump : dump는 계층구조를 보여줌(튜플처럼 복합적인 데이터를 다룰 때 활용 가능)
+                 print(stillArray)
+                 dump(stillArray)
+                 dump(self.tvList)
+                 */
+                
+                //let still = json["episodes"][0]["still_path"].stringValue
+                //print(still)
+          
             case .failure(let error):
                 print(error)
             }
         }
     }
-    /*
-    아 그 저는 func callRequest(query: Int, complitionHandler: @escaping ([String]) -> ())
-    여기에서 컴플리션핸들러 형태를 바꿔서 해결했어요.
-    [String] -> () 이 형태가 아니었어서 괄호 안에 부분만 변경했습니다!!
-    */
-    
+
+    //네트워크 통신 응답을 순차적으로 받기 위해서는 응답requestEpisodeImage함수가 아니라 requestImage처럼 클로저내에서 네트워크 통신 구문 써야함(그러면 상위 통신 종료 후 하위 통신 실행)
+    //반복문으로 해결하면 안 됨. -> 1. 순서보장 안됨(여러 데이터를 요청해도 응답이 순차적으로 오지 않음) 2. 언제 끝날지 모름(응답이 언제 올지 모름) 3. 제한있을수 있음(ex. 1초에 5번 이상 요청시 block)
+    //async/awake(ios13이상 비동기 구문) 통해 중괄호 많이 쓰지 않고도 처리할 수 있음.
+
     func requestImage(completionHandler: @escaping ([[String]]) -> () ) {
         var posterList: [[String]] = []
-        
+
         TMDBAPIManager.shared.callRequest(query: tvList[0].1) { value in
             posterList.append(value)
 
-            TMDBAPIManager.shared.callRequest(query: self.tvList[1].1) { value in
+            TMDBAPIManager.shared.callRequest(query: self.tvList[1].1) { value in //클로저 구문 내에 있으면 구분 지어야 하기 때문에 어떤 인스턴스에 속해있는 튜플인지 가지고 와야해서 .self 추가
                 posterList.append(value)
 
                 TMDBAPIManager.shared.callRequest(query: self.tvList[2].1) { value in
                     posterList.append(value)
-                   
+
                     TMDBAPIManager.shared.callRequest(query: self.tvList[3].1) { value in
                         posterList.append(value)
-                     
+
                         TMDBAPIManager.shared.callRequest(query: self.tvList[4].1) { value in
                             posterList.append(value)
-                           
+
                             TMDBAPIManager.shared.callRequest(query: self.tvList[5].1) { value in
                                 posterList.append(value)
-                                
+
                                 TMDBAPIManager.shared.callRequest(query: self.tvList[6].1) { value in
                                     posterList.append(value)
-                                    
+
                                     TMDBAPIManager.shared.callRequest(query: self.tvList[7].1) { value in
                                         posterList.append(value)
                                         completionHandler(posterList)
@@ -103,22 +111,23 @@ class TMDBAPIManager {
         }
     }
 }
-//
-//    func requestEpisodeImage() {
-//        let id = tvList[7].1
-//
-//        //반복문으로 해결하면 안 됨. -> 1. 순서보장 안됨 2. 언제 끝날지 모름 3. 제한있을수 있음(1초에 5번 이상 요청시 block)
-//
-//        for item in tvList {
-//            TMDBAPIManager.shared.callRequest(query: item.1) { stillPath in
-//                print(stillPath)
-//            }
-//        }
-//
-//        TMDBAPIManager.shared.callRequest(query: id) { stillPath in
-//            print(stillPath)
-//            TMDBAPIManager.shared.callRequest(query: id) { stillPath in
-//                print(stillPath)
-//        }
-//
-//    }
+    /*
+    func requestEpisodeImage() {
+        let id = tvList[7].1
+
+        
+        for item in tvList {
+            TMDBAPIManager.shared.callRequest(query: item.1) { stillPath in
+                print(stillPath)
+            }
+        }
+
+        TMDBAPIManager.shared.callRequest(query: id) { stillPath in
+            print(stillPath)
+            TMDBAPIManager.shared.callRequest(query: id) { stillPath in
+                print(stillPath)
+        }
+    }
+    }
+    */
+
