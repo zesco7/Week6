@@ -14,7 +14,8 @@ class MainTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        print("CardCollectionViewCell", #function)
+        //print("MainViewCell", #function)
         setupUI()
         
         //collectionViewLayOut()가 아니라 왜 contentCollectionView.collectionViewLayout = collectionViewLayOut()인지?

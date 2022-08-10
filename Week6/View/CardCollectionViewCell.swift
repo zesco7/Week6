@@ -16,6 +16,14 @@ class CardCollectionViewCell: UICollectionViewCell {
         
         setupUI()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        cardView.contentLabel.text = "A"
+    }
+    
+    
     func setupUI() {
         cardView.backgroundColor = .clear
         cardView.posterImageView.backgroundColor = .lightGray

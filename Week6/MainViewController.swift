@@ -7,6 +7,19 @@
 
 import UIKit
 
+
+/*
+ awakeFromNib: 셀UI초기화
+ cellForItemAt:
+ -. 재사용 될 때마다 사용자에게 보일때 마다 실행됨
+ -. 화면과 데이터는 별개이므로 모든 Indexpath.index에 대한 조건이 없다면 재사용시 오류 발생할 수 있음
+ prepareForReuse
+ -. 셀이 재사용 될때 초기화하고자 하는 값을 넣으면 오류를 해결할 수 있음. 즉, 모든 Indexpath.index에 대한 조건 작성하지 않아도 됨
+ CollectionView in TableView
+ -. 하나의 컬렉션뷰나 테이블 뷰라면 스크롤 속도 때문에 문제되지 않음.
+ -. 복합적인 구조라면 테이블셀, 컬렉션셀도 재사용 되어야함.
+ 
+ */
 class MainViewController: UIViewController {
 
     @IBOutlet weak var bannerCollectionView: UICollectionView!
@@ -15,7 +28,7 @@ class MainViewController: UIViewController {
     let color: [UIColor] = [.red, .systemPink, .blue, .yellow, .orange]
     
     let numberLIst: [[Int]] = [
-        [Int](100...110),
+        [Int](100...130),
         [Int](55...75),
         [Int](81...90),
         [Int](91...100)
@@ -33,6 +46,8 @@ class MainViewController: UIViewController {
         bannerCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionViewCell")
         bannerCollectionView.collectionViewLayout = collectionViewLayOut()
         bannerCollectionView.isPagingEnabled = true // 디바이스 너비만큼 움직임. 이동폭 맞추려면 이미지를 디바이스 폭이랑 맞춰야함.
+        
+        TMDBAPIManager.shared.requestEpisodeImage()
     }
     
 }
@@ -47,8 +62,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+    //내부 매개변수 tableView를 통해
+    //테이블뷰 객체가 하나일 경우 내부 매개변수를 활용하지 않아도 문제가 생기지 않는다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        
+        print("MainViewController", #function, indexPath)
         
         cell.backgroundColor = .orange
         cell.contentCollectionView.backgroundColor = .lightGray
@@ -56,6 +75,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentCollectionView.dataSource = self
         cell.contentCollectionView.tag = indexPath.section // 태그 통해 각 셀 구분  짓기
         cell.contentCollectionView.register(UINib(nibName: "CardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionViewCell")
+        //cell.contentCollectionView.reloadData() /index out of range 오류 안나게 해줌
         return cell
     }
     
@@ -73,7 +93,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //        return collectionView == bannerCollectionView ? color.count : numberLIst[collectionView.tag].count
     }
     
+    //bannerCollectionview 또는 테이블뷰 안에 들어 있는 컬렉션뷰 둘 다 사용 가능하다.(어떤걸 재활용할지 정하는 것이기 때문)
+    //내부 매개변수가 아닌 명확한 아웃렛을 사용할 경우, 셀이 재사용되면 특정 collectionView 셀을 재사용해서 엉킬 수 있음.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        print("MainViewController", #function, indexPath)
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as? CardCollectionViewCell else { return UICollectionViewCell() }
         
         if collectionView == bannerCollectionView {
@@ -82,7 +107,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             //cell.cardView.backgroundColor = collectionView.tag.isMultiple(of: 2) ? .brown : .black
             cell.cardView.posterImageView.backgroundColor = .black
             cell.cardView.contentLabel.textColor = .white
+            
+            
+            //컬렉션뷰 레이블표시에 조건문 적용해보기
+            
+            
             cell.cardView.contentLabel.text = "\(numberLIst[collectionView.tag][indexPath.item])"
+//            if indexPath.item < 2 {
+//            cell.cardView.contentLabel.text = "\(numberLIst[collectionView.tag][indexPath.item])"
+//
+//            }
         }
         //cell.cardView.posterImageView.backgroundColor = color[indexPath.item]
         
