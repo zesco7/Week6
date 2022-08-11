@@ -29,6 +29,7 @@
 		981FE01628A1B81A00F99E73 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 981FE01528A1B81A00F99E73 /* Kingfisher */; };
 		981FE01828A1C23A00F99E73 /* KakaoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FE01728A1C23A00F99E73 /* KakaoAPIManager.swift */; };
 		981FE01A28A1C70700F99E73 /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FE01928A1C70700F99E73 /* ClosureViewController.swift */; };
+		984EFB4228A493BB00BDA67D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984EFB4128A493BB00BDA67D /* MapViewController.swift */; };
 		9889247228A330A600EE934C /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9889247128A330A600EE934C /* ReusableViewProtocol.swift */; };
 		9889247628A343FA00EE934C /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9889247528A343FA00EE934C /* TMDBAPIManager.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		981FE00C28A1B6A300F99E73 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		981FE01728A1C23A00F99E73 /* KakaoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIManager.swift; sourceTree = "<group>"; };
 		981FE01928A1C70700F99E73 /* ClosureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureViewController.swift; sourceTree = "<group>"; };
+		984EFB4128A493BB00BDA67D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9889247128A330A600EE934C /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		9889247528A343FA00EE934C /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 				981FDFFC28A1B5DB00F99E73 /* LaunchScreen.storyboard */,
 				981FDFFF28A1B5DB00F99E73 /* Info.plist */,
 				981FE00828A1B61F00F99E73 /* APIKey.swift */,
+				984EFB4128A493BB00BDA67D /* MapViewController.swift */,
 			);
 			path = Week6;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				981FE00B28A1B66600F99E73 /* Endpoint.swift in Sources */,
 				9889247628A343FA00EE934C /* TMDBAPIManager.swift in Sources */,
 				981FE00D28A1B6A300F99E73 /* URL+Extension.swift in Sources */,
+				984EFB4228A493BB00BDA67D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +391,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Week6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -414,6 +419,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Week6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

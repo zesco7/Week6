@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DGp-s8-aQ2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0b7-7x-KYV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -127,12 +127,19 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bad-T5-SqU" customClass="CardView" customModule="Week6" customModuleProvider="target">
-                                <rect key="frame" x="87" y="400" width="240" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bad-T5-SqU" customClass="CardView" customModule="Week6" customModuleProvider="target">
+                                <rect key="frame" x="160" y="424" width="100" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXo-61-JK3">
+                                        <rect key="frame" x="-122" y="23" width="344" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="hft-7X-Reb"/>
-                                    <constraint firstAttribute="height" constant="100" id="oxi-Vy-79p"/>
+                                    <constraint firstAttribute="width" constant="100" id="dy4-Ai-28M"/>
+                                    <constraint firstAttribute="height" constant="100" id="tJP-zg-9JW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -142,12 +149,13 @@
                             <constraint firstItem="7bV-px-zfQ" firstAttribute="leading" secondItem="iqm-fg-CRZ" secondAttribute="leading" constant="50" id="1K3-u6-KeJ"/>
                             <constraint firstItem="gZR-HC-ybG" firstAttribute="leading" secondItem="iqm-fg-CRZ" secondAttribute="leading" constant="50" id="Jso-Eg-HHd"/>
                             <constraint firstItem="aIc-qv-c7F" firstAttribute="top" secondItem="7bV-px-zfQ" secondAttribute="bottom" constant="20" id="NyO-s6-Ol7"/>
-                            <constraint firstItem="bad-T5-SqU" firstAttribute="centerY" secondItem="cTm-4y-6do" secondAttribute="centerY" id="UQP-6R-H5r"/>
                             <constraint firstItem="iqm-fg-CRZ" firstAttribute="trailing" secondItem="aIc-qv-c7F" secondAttribute="trailing" constant="50" id="Vuq-Id-2wt"/>
+                            <constraint firstItem="bad-T5-SqU" firstAttribute="leading" secondItem="iqm-fg-CRZ" secondAttribute="leading" constant="160" id="WzV-9M-70f"/>
                             <constraint firstItem="7bV-px-zfQ" firstAttribute="top" secondItem="gZR-HC-ybG" secondAttribute="bottom" constant="20" id="X9U-Bg-XKs"/>
                             <constraint firstItem="iqm-fg-CRZ" firstAttribute="trailing" secondItem="7bV-px-zfQ" secondAttribute="trailing" constant="50" id="cmj-py-tZS"/>
                             <constraint firstItem="iqm-fg-CRZ" firstAttribute="trailing" secondItem="gZR-HC-ybG" secondAttribute="trailing" constant="50" id="dAV-By-J6r"/>
                             <constraint firstItem="aIc-qv-c7F" firstAttribute="leading" secondItem="iqm-fg-CRZ" secondAttribute="leading" constant="50" id="dgc-ln-wNV"/>
+                            <constraint firstItem="bad-T5-SqU" firstAttribute="top" secondItem="aIc-qv-c7F" secondAttribute="bottom" constant="200" id="lO4-2v-D5V"/>
                             <constraint firstItem="gZR-HC-ybG" firstAttribute="top" secondItem="iqm-fg-CRZ" secondAttribute="top" constant="20" id="y4f-Qo-dJn"/>
                         </constraints>
                     </view>
@@ -157,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrx-T1-zYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="29"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="28.794642857142854"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="69q-gF-lwb">
@@ -268,6 +276,35 @@
             </objects>
             <point key="canvasLocation" x="1979.7101449275365" y="28.794642857142854"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="myb-c8-HpH">
+            <objects>
+                <viewController id="0b7-7x-KYV" customClass="MapViewController" customModule="Week6" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D1q-ea-3Ai">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xPt-6d-a7t">
+                                <rect key="frame" x="0.0" y="235" width="414" height="627"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="g7I-O3-XcO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g7I-O3-XcO" firstAttribute="bottom" secondItem="xPt-6d-a7t" secondAttribute="bottom" id="H3L-KC-eyj"/>
+                            <constraint firstItem="g7I-O3-XcO" firstAttribute="trailing" secondItem="xPt-6d-a7t" secondAttribute="trailing" id="o54-3m-naz"/>
+                            <constraint firstItem="xPt-6d-a7t" firstAttribute="height" secondItem="D1q-ea-3Ai" secondAttribute="height" multiplier="0.7" id="prK-fh-4oH"/>
+                            <constraint firstItem="xPt-6d-a7t" firstAttribute="leading" secondItem="g7I-O3-XcO" secondAttribute="leading" id="wRc-q2-jwI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="xPt-6d-a7t" id="4eg-Ob-UJh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxh-oK-sBU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="29"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="gZR-HC-ybG">
@@ -277,6 +314,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
