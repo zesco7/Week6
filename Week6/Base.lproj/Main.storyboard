@@ -319,7 +319,7 @@
                                     <constraint firstAttribute="height" constant="50" id="eep-mO-Ru2"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="YPImagePickerButtonClicked"/>
                                 <connections>
                                     <action selector="YPImagePickerButtonClicked:" destination="Akp-7n-ht1" eventType="touchUpInside" id="W1S-kN-QoG"/>
                                 </connections>
@@ -330,7 +330,7 @@
                                     <constraint firstAttribute="height" constant="50" id="p2k-rV-mny"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="cameraButtonClicked"/>
                                 <connections>
                                     <action selector="cameraButtonClicked:" destination="Akp-7n-ht1" eventType="touchUpInside" id="UgK-RN-7V6"/>
                                 </connections>
@@ -341,7 +341,7 @@
                                     <constraint firstAttribute="height" constant="50" id="OOO-pR-2Wp"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="photoLIbraryButton"/>
                                 <connections>
                                     <action selector="photoLIbraryButton:" destination="Akp-7n-ht1" eventType="touchUpInside" id="hdV-bh-NPW"/>
                                 </connections>
@@ -358,9 +358,9 @@
                                     <constraint firstAttribute="height" constant="50" id="gUJ-3L-ZXw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="saveToPhotoLibrary"/>
                                 <connections>
-                                    <action selector="saveToPhotoLibrary:" destination="Akp-7n-ht1" eventType="touchUpInside" id="5ut-5k-hJn"/>
+                                    <action selector="saveToPhotoLibrary:" destination="Akp-7n-ht1" eventType="touchUpInside" id="2uy-72-wYX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHx-le-3CX">
