@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+
 /*위치
  1. import CoreLocation
  2. let locationManager = CLLocationManager() //
@@ -19,16 +20,15 @@ import CoreLocation
 
 /*
  MapView
- -. 지도와 위치권한은 상관없다. 지도에 현재위치를 표시하려면 위치 권한을 등록해줘야 한다.
+ -. 지도와 위치권한은 상관없다. 불러온 지도에 현재위치를 표시하려면 위치 권한을 등록해줘야 한다.
  -. 디폴트 위치와 범위를 지정해줘야 한다.
  -. 핀을 추가해줘야 한다.(어노테이션)
  */
 
 /*
  권한: 반영이 느릴수 있어서
- 
+*/
 
- */
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -38,28 +38,39 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //3. 프로토콜 연결
-        locationManager.delegate = self
-        setRegionAndAnnotation()
+        //locationManager.delegate = self
+        //setRegionAndAnnotation()
         
+        let center = CLLocationCoordinate2D(latitude: 37.544133, longitude: 127.075364)
+        let region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100) // 디폴트 위치정보를 넣어준다. 위도, 경도, 사이즈
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = center
+        annotation.title = "나의 동네"
+        mapView.addAnnotation(annotation)
         //checkUserDeviceServiceAuthorization() 제거 가능한 이유 명확하게 알기
 
     }
-    //center는 지도 중심 위치이며 애플맵에서 얻은 좌표를 넣어준다.
-    //지도 중심 기반으로 보여질 범위를 설정한다.(atitudinalMeters, longitudinalMeters)
-    func setRegionAndAnnotation() {
-        let center = CLLocationCoordinate2D(latitude: 37.544133, longitude: 127.075364)
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100)
-        mapView.setRegion(region, animated: true)
-        
-        //지도에 핀추가
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
-        annotation.title = "이곳이 나의 캠퍼스다"
-        mapView.addAnnotation(annotation)
-    }
-    
 }
-
+    //지도 중심 설정: center는 지도 중심 위치이며 애플맵에서 얻은 좌표를 넣어준다.
+    //화면 표시 범위 설정: 지도 중심 기반으로 보여질 범위를 설정한다.
+    //화면 표시: 정해진 위치정보를 화면에 표시한다.
+//    func setRegionAndAnnotation() {
+//        let center = CLLocationCoordinate2D(latitude: 37.544133, longitude: 127.075364)
+//        let region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100) // 디폴트 위치정보를 넣어준다. 위도, 경도, 사이즈
+//        mapView.setRegion(region, animated: true)
+//
+//
+//        //지도에 핀추가
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = center
+//        annotation.title = "이곳이 나의 캠퍼스다"
+//        mapView.addAnnotation(annotation)
+//    }
+//
+//}
+/*
 extension MapViewController { // 위치와 관련된 User Defined 메서드)
     func checkUserDeviceServiceAuthorization() {
         let authorizationStatus: CLAuthorizationStatus
@@ -130,3 +141,4 @@ extension MapViewController: MKMapViewDelegate {
     //지도에 커스텀 핀추가
     
 }
+*/
