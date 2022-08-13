@@ -369,9 +369,9 @@
                                     <constraint firstAttribute="height" constant="50" id="xDi-dE-I0Y"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="clovaFaceButtonClicked"/>
                                 <connections>
-                                    <action selector="clovaFaceButtonClicked:" destination="Akp-7n-ht1" eventType="touchUpInside" id="OkS-Ze-cZW"/>
+                                    <action selector="clovaFaceButtonClicked:" destination="Akp-7n-ht1" eventType="touchUpInside" id="iBS-Kg-rrj"/>
                                 </connections>
                             </button>
                         </subviews>
