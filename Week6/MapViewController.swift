@@ -17,6 +17,7 @@ import CoreLocation
  4. 프로토콜 선언
  5. extension MapViewController : 위치와 관련된 User Defined 메서드 설정
  6. 사용자의 위치 권한 상태 확인 : 사용자위치 허용, 거부, 아직선택안함 등 확인(단, 사전에 iOS위치 서비스활성화 꼭 확인)
+ 7. 사용자의 권한 상태가 바뀔때를 알려줌: 거부->설정, NOTDetermined->허용, 허용->거부(허용해서 위치 가지고 오는 중에 위치서비스 비활성화)
  */
 
 /*참고
@@ -139,8 +140,8 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
     }
-    //CLLocationManager9. 사용자의 권한 상태가 바뀔때를 알려줌: 거부->설정, NOTDetermined->허용, 허용->거부(허용해서 위치 가지고 오는 중에 위치서비스 비활성화)
-    //iOS14이상: 사용자 권한 상태가 변경 될 때, 위치관리자 생성할 때 호출됨
+    //CLLocationManager7. 사용자의 권한 상태가 바뀔때를 알려줌: 거부->설정, NOTDetermined->허용, 허용->거부(허용해서 위치 가지고 오는 중에 위치서비스 비활성화)
+    //iOS14이상: 위치관리자 생성할 때, 사용자 권한 상태가 변경 될 때 호출됨
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function)
         checkUserDeviceLocationServiceAuthorization()
