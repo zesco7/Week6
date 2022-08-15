@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 import YPImagePicker
 
-/*UIImagePickerController
- 1. : 사진관리 인스턴스 선언
+/*UIImagePickerController: 사진관리
+ 1. : 사진관리 인스턴스 선언(UIImagePickerController)
  2. : 프로토콜 연결
  3. : 프로토콜 선언
  3-1. : 뷰 기능 사용시(didFinishPickingMediaWithInfo: 사진을 선택 또는 카메라 촬영 직후 실행)
